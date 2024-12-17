@@ -143,9 +143,27 @@ http://localhost:9082/cms/v1.0/getData/a28d4846-zaq12345/logo.png
 - PDF export
 - Support Permalinks
 
-## For the front-end:
--Generate a google app key and insert the following enviroment variables APP_EMAIL_ADDRESS=<your-email-address> and GOOGLE_APP_PASSWORD=<your-secret-google-app-key>
--Navigate to ```http://localhost:9082/cms/v1.0/resources``` 
+
+## Front-End Setup
+
+### 1. Generate a Google App Key
+
+To integrate with the front-end, you will need a Google App Key. Follow the instructions to generate the key and retrieve the required credentials.
+
+### 2. Set Environment Variables
+
+Once you have your Google App Key, insert the following environment variables into your local environment:
+
+- `APP_EMAIL_ADDRESS=<your-email-address>`
+- `GOOGLE_APP_PASSWORD=<your-secret-google-app-key>`
+
+> **Note:** Replace `<your-email-address>` and `<your-secret-google-app-key>` with your actual credentials.
+
+You can store these values in your `.env` file or set them in your system environment variables.
+
+### 3. Access Resources
+
+After setting up the environment variables, navigate to the following URL in your browser to view the resources:
 
 
 
