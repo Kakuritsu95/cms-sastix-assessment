@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+    <link
+            rel="stylesheet"
+            th:href="@{/stylesheet/management-resources.css}"
+            href="/static/stylesheet/management-resources.css"
+    >
+    <title>Revisions</title>
+<body>
+  <main class="container emailFormContainer">
+      <h1>Welcome to Sastix-CMS</h1>
+
+       <h3 th:text="|Send email with attachment resource # ${resourceUID}|"></h3>
+
+
+      <form method="post" th:action="@{send}" >
+       <div>
+         <label for="from">Your email</label>
+         <input minlength="10" name="from" id="from" type="email"/>
+       </div>
+      <div>
+          <label for="to">Receiver's Email</label>
+          <input minlength="10" name="to" id="to" type="email"/>
+      </div>
+          <div>
+              <label for="subject">Subject</label>
+              <input minlength="3" name="subject" id="subject"/>
+          </div>
+          <div>
+              <label for="content">Content</label>
+              <textarea minlength="10" rows="5" name="content" id="content"></textarea>
+          </div>
+          <input name="resourceURI"  th:value="${resourceURI}" type="hidden"/>
+          <button type="submit">Send email</button>
+      </form>
+  </main>
+</body>
+</html>

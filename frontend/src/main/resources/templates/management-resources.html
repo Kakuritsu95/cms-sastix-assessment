@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+    <link
+            rel="stylesheet"
+            th:href="@{/stylesheet/management-resources.css}"
+            href="/static/stylesheet/management-resources.css"
+    >
+    <title>Resources</title>
+<body>
+<main class="container">
+    <h1>Welcome to Sastix-CMS</h1>
+    <h3>Manage resource</h3>
+    <div>
+        <button id="openFormModalButton">Create new</button>
+    </div>
+    <section id="content">
+        <table>
+            <thead>
+            <tr>
+                <th>#ID</th>
+                <th>Author</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Actions</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+
+           <th:block th:each="resource : ${resources}">
+                <tr>
+                    <td th:text="${resource.resourceUID}">ID</td>
+                    <td th:text="${resource.author}">Author</td>
+                    <td th:text="${resource.name}">Name</td>
+                    <td th:text="${resource.type}">Type</td>
+                    <td >
+                        <div class="actions" th:attr="data-resourceName=${resource.name},
+                                                      data-uid=${resource.resourceUID},
+                                                      data-resourceAuthor=${resource.author},
+                                                      data-uri=${resource.resourceURI},
+                                                      data-resourceMediaType=${resource.type}">
+
+                        <a th:href="@{getData/{resourceURI}(resourceURI=${resource.resourceURI})}" class="actionButton">
+                                <img th:src="@{/icons/eye.svg}" src="../static/icons/eye.svg" alt="Delete" width="20" height="20">
+                        </a>
+                        <button class="actionButton actionUpdate">
+                            <img th:src="@{/icons/pencil.svg}" src="../static/icons/pencil.svg" alt="Edit" width="20" height="20" >
+                        </button>
+
+                        <a th:href="@{resources/revisions/{resourceId}(resourceId=${resource.id})}" class="actionButton">
+                            <img th:src="@{/icons/archive.svg}" src="../static/icons/archive.svg" alt="Delete" width="17" height="17">
+                        </a>
+                        <form method="post" th:action="@{email/form}">
+                                <button class="actionButton" type="submit">
+                                    <img th:src="@{/icons/envelope.svg}" src="../static/icons/envelope.svg" alt="mail" width="20" height="20" >
+                                </button>
+                                <input type="hidden" name="resourceUID" id="resourceUID" th:value="${resource.resourceUID}"/>
+                                <input type="hidden" name="resourceURI" id="resourceURI" th:value="${resource.resourceURI}"/>
+                        </form>
+                        <button class="actionButton actionDelete">
+                                <img th:src="@{/icons/trashcan.svg}" src="../static/icons/trashcan.svg" alt="Delete" width="20" height="20" >
+                        </button>
+
+                        </div>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+        <th:block th:if="${resources == null or resources.size() == 0}">
+            <h3>No resources registered, you can start by clicking on the create resource button. Have fun!</h3>
+        </th:block>
+    </section>
+    <dialog id="formModal">
+        <div class="modalContent formModalContent">
+           <h2>Create resource!</h2>
+
+
+            <form id="form">
+            <div class="flexContainer">
+              <div class="flexItem">
+             <label for="resource">File <span data-tooltip="Upload resource (if uri of an external resources is provided then leave this field empty)">*</span></label>
+                  <label for="resource">
+                  <div type="button">Upload resource</div>
+                  <input name="resource" id="resource" type="file"/>
+                  </label>
+           </div>
+
+          <div class="flexItem">
+            <label for="resourceExternalURI">External URI <span data-tooltip="If you want to upload a new resource leave this field empty">*</span></label>
+            <input name="resourceExternalURI" id="resourceExternalURI" type="text"/>
+                </div>
+            </div>
+            <div>
+            <label for="resourceName">Resource name</label>
+            <input name="resourceName" id="resourceName" type="text"/>
+            </div>
+            <div>
+                <label for="resourceAuthor">Author</label>
+                <input name="resourceAuthor" id="resourceAuthor" type="text"/>
+            </div>
+            <div>
+                <label for="resourceMediaType">Resource MediaType <span data-tooltip="This field is only required if you upload an external resource">*</span></label>
+                <input name="resourceMediaType" id="resourceMediaType" type="text"/>
+            </div>
+            <div>
+                <label for="resourceTenantId">Resource TenantID</label>
+                <input name="resourceTenantId" id="resourceTenantId" type="text"/>
+            </div>
+            <button class="primary" type="submit">SUBMIT</button>
+
+          </form>
+        </div>
+    </dialog>
+    <dialog id="deleteModal">
+     <div class="modalContent deleteModalContent">
+         <div class="submitDeleteWarningText">
+                 <span>Are you sure you want to delete resource with uid:</span>
+                <span id="deleteResourceUidPlaceholder"></span>
+         </div>
+         <div class="flexRowWrapper">
+          <button id="submitDeleteButton" class="button buttonCloseModal buttonSubmitDelete"> Delete</button>
+          <button class="button buttonCloseModal buttonCancel ">Cancel</button>
+         </div>
+     </div>
+        </dialog>
+</main>
+<script defer type="module" th:src="@{/scripts/resources.js}"></script>
+</body>
+</html>

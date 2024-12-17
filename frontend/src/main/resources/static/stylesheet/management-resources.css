@@ -1,0 +1,157 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+label {
+  color: gray;
+  font-weight: 600;
+}
+
+input {
+  max-height: 2.85rem;
+}
+
+.modalContent {
+  border: 1px solid gray;
+  padding: 2rem 4rem;
+  width: 60%;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.flexItem {
+  width: 48%;
+}
+
+.error {
+  font-size: 0.6rem;
+  color: red;
+  display: inline-block;
+  margin-left: 3px;
+}
+svg {
+  height: 1.5rem;
+  cursor: help;
+}
+path {
+  cursor: help;
+}
+
+.actions {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.actionButton {
+  display: flex;
+  background-color: white;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 0.2rem;
+  min-width: 22px;
+  margin-bottom: 0;
+}
+
+.actionButton:first-child {
+  margin-left: 0;
+}
+
+.actionButton:hover {
+  background-color: #d3d3d3;
+}
+
+.flexRowWrapper {
+  margin-top: 1rem;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.buttonCancel {
+  background-color: #a2a4a8;
+  font-weight: 500;
+  width: 7rem;
+}
+
+.buttonSubmitDelete {
+  background-color: #ba3829;
+  font-weight: 500;
+  width: 7rem;
+}
+.buttonCancel:hover {
+  background-color: gray;
+}
+.buttonSubmitDelete:hover {
+  background-color: #aa3829;
+}
+. submitDeleteWarningText {
+  font-weight: 500;
+}
+
+#deleteResourceUidPlaceholder {
+  color: coral;
+}
+
+.emailFormContainer {
+  max-width: 40rem;
+  margin-top: 1rem;
+}
+h3 {
+  margin: 2rem 0;
+}
+
+h1 {
+  color: orange;
+}
+
+#openFormModalButton {
+  margin-bottom: 1.5rem;
+}
+
+@media only screen and (max-width: 1600px) {
+  .modalContent {
+    width: 75%;
+  }
+}
+
+@media only screen and (max-width: 1320px) {
+  .modalContent {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 1090px) {
+  .modalContent {
+    width: 90%;
+  }
+  .flexContainer {
+    flex-direction: column;
+  }
+  .flexItem {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .modalContent {
+    width: 95%;
+  }
+  .flexContainer {
+    flex-direction: column;
+  }
+  .flexItem {
+    width: 100%;
+  }
+}

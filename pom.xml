@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.3</version>
+    </parent>    
+
+    <groupId>com.sastix.cms</groupId>
+    <artifactId>cms-parent</artifactId>
+    <version>0.1.1</version>
+    <packaging>pom</packaging>
+    <inceptionYear>2016</inceptionYear>
+    <name>SASTIX CMS</name>
+
+    <modules>
+        <module>common</module>
+        <module>server</module>
+        <module>client</module>
+        <module>integration-tests</module>
+        <module>frontend</module>
+    </modules>
+	
+    <properties>
+        <maven.test.failure.ignore>true</maven.test.failure.ignore>
+        <java.version>11</java.version>
+        <hazelcast.version>3.6.2</hazelcast.version>
+        <spring.boot.version>2.4.3</spring.boot.version>
+        <spring.retry.version>1.3.1</spring.retry.version>
+        <logback.version>1.2.3</logback.version>
+        <activiti.version>7.1.0</activiti.version>
+        <pdfbox.version>2.0.22</pdfbox.version>
+        <tika.core.version>1.23</tika.core.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <lombok.version>1.18.18</lombok.version>
+    </properties>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-releases</id>
+            <url>https://repo.spring.io/libs-release</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.0</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${spring.boot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+
+</project>

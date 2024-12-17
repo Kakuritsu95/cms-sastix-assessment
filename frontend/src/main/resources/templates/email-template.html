@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email</title>
+</head>
+
+<div style="padding: 20px; border-radius: 5px">
+
+
+    <div style="font-size:1.1rem;">
+        <div style="margin-bottom: 20px;">
+            <span style="font-weight: 600;">Hi there!</span>
+            <p >You just received an email from <span style="color: green; font-weight:600;" th:text="${emailData.from}">thodoros</span> with the following subject and message:</p>
+        </div>
+
+        <div  style="background-color: #f9f9f9; padding: 10px; margin-bottom: 1rem;">
+            <span style="font-weight: 600;">Subject:</span>
+            <span th:text="${emailData.subject}" style="color: #333;">123</span>
+        </div>
+
+        <div style="background-color: #f9f9f9; padding: 10px; margin-bottom: 1rem;">
+            <span style="font-weight: 600;">Message:</span>
+            <p th:text="${emailData.content}" style="font-size:1rem; letter-spacing:0.3px">Lorem ipsum kai tetxoia.</p>
+        </div>
+
+        <p style="margin-top: 30px; font-size: 1.2rem; font-weight:600; color:orange ">Thank you!</p>
+    </div>
+</div>
+</body>
+</html>

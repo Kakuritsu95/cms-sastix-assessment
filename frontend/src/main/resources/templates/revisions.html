@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+    <link
+            rel="stylesheet"
+            th:href="@{/stylesheet/management-resources.css}"
+            href="/static/stylesheet/management-resources.css"
+    >
+    <title>Revisions</title>
+<body>
+<main class="container">
+    <div class="flexRowWrapper" style="justify-content:space-between">
+
+    <h1>Welcome to Sastix-CMS</h1>
+        <a th:href="@{${clientPrefixURL} + '/resources'}" style="display:inline-block; margin-left:0.5rem;">
+            Back to resources page
+        </a>
+    </div>
+      <h3 th:text="|Revisions for resource # ${resourceId}|">Revisions for # 123</h3>
+    <section id="content">
+        <table>
+            <thead>
+            <tr>
+                <th>Updated at</th>
+                <th>Author</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>URI</th>
+
+            </tr>
+            </thead>
+            <tbody>
+
+            <th:block th:each="revision : ${revisions}">
+                <tr>
+                    <td th:text="${revision.updatedAt}">24-01-2002</td>
+                    <td th:text="${revision.resourceDTO.author}">Author</td>
+                    <td th:text="${revision.resourceDTO.name}">Name</td>
+                    <td th:text="${revision.resourceDTO.type}">Type</td>
+
+                    <td>
+                        <a th:href="@{/cms/v1.0/getData/{resourceURI}(resourceURI=${revision.resourceDTO.resourceURI})}" th:text="${revision.resourceDTO.resourceURI}">Resource Link</a>
+                    </td>
+
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+        <th:block th:if="${revisions == null or revisions.size() == 0}">
+            <h3>No revisions exist</h3>
+        </th:block>
+    </section>
+</main>
+</body>
+</html>
