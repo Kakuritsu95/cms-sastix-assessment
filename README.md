@@ -142,3 +142,12 @@ http://localhost:9082/cms/v1.0/getData/a28d4846-zaq12345/logo.png
 - Graphql 
 - PDF export
 - Support Permalinks
+
+## For the front-end:
+-Generate a google app key and insert the following enviroment variables APP_EMAIL_ADDRESS=<your-email-address> and GOOGLE_APP_PASSWORD=<your-secret-google-app-key>
+-Navigate to ```http://localhost:9082/cms/v1.0/resources``` 
+
+
+
+
+
