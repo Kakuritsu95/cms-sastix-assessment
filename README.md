@@ -164,7 +164,7 @@ You can store these values in your `.env` file or set them in your system enviro
 ### 3. Access Resources
 
 After setting up the environment variables, navigate to the following URL in your browser to view the resources:
-
+-http://localhost:9082/cms/v1.0/resources
 
 
 
