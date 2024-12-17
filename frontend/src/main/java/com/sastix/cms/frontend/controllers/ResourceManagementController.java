@@ -63,6 +63,7 @@ private String clientPrefixURL;
         NewLockDTO newLockDTO = new NewLockDTO(deleteResourceRequest.getResourceUID(), deleteResourceRequest.getResourceAuthor());
         LockDTO lockDTO = client.lockResource(newLockDTO);
         LockedResourceDTO lockedResourceDTO = new LockedResourceDTO(newLockDTO.getUID(), newLockDTO.getLockOwner(), lockDTO.getLockID(),lockDTO.getLockExpiration());
+        client.deleteResource(lockedResourceDTO);
         return ResponseEntity.ok("Deleted, successfully");
     }
 
